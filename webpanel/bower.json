@@ -10,7 +10,9 @@
     "socket.io-client": "~1.3.5",
     "google-chart": "GoogleWebComponents/google-chart#^1.0.0",
     "google-map": "GoogleWebComponents/google-map#^1.0.0",
-    "aha-table": "~2.0.6"
+    "aha-table": "~2.0.6",
+    "fetch": "~0.9.0",
+    "es6-promise": "~2.2.0"
   },
   "devDependencies": {
     "web-component-tester": "*",

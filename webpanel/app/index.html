@@ -44,7 +44,12 @@
   <link rel="import" href="elements/elements.html">
   <!-- endreplace-->
 
+  <!-- Socket.io Client -->
   <script src="bower_components/socket.io-client/socket.io.js"></script>
+
+  <!-- Fetch used for AJAX request require es6-promise -->
+  <script src="bower_components/es6-promise/promise.min.js"></script>
+  <script src="bower_components/fetch/fetch.js"></script>
 </head>
 
 <body unresolved class="fullbleed layout vertical">
@@ -107,6 +112,25 @@
                 zoom="15"
                 disable-default-ui>
                 <google-map-marker
+                  id="weather-1"
+                  latitude="34.0183583"
+                  longitude="-118.491669"
+                  icon="images/svg/2.svg">
+                  <span class="description-1">
+                    Clear
+                  </span>
+                  <br>
+                  Current Temperature:
+                  <span class="temp-1">
+                    80
+                  </span>
+                  °F <br>
+                  Current Humidity:
+                  <span class="humidity-1">
+                    0
+                  </span> <br>
+                </google-map-marker>
+                <google-map-marker
                   id="trash-can-1"
                   latitude="34.0183573"
                   longitude="-118.486679"
@@ -118,7 +142,7 @@
                   id="trash-can-2"
                   latitude="34.0243573"
                   longitude="-118.489185"
-                  title="Trashcan 1">
+                  title="Trashcan 2">
                   <a href="/detail">To detail</a>
                   <iron-icon icon="delete"></iron-icon>
                 </google-map-marker>
@@ -126,7 +150,7 @@
                   id="trash-can-3"
                   latitude="34.0263573"
                   longitude="-118.493185"
-                  title="Trashcan 1">
+                  title="Trashcan 3">
                   <a href="/detail">To detail</a>
                   <iron-icon icon="delete"></iron-icon>
                 </google-map-marker>
@@ -134,7 +158,7 @@
                   id="trash-can-4"
                   latitude="34.0103573"
                   longitude="-118.493185"
-                  title="Trashcan 1">
+                  title="Trashcan 4">
                   <a href="/detail">To detail</a>
                   <iron-icon icon="delete"></iron-icon>
                 </google-map-marker>
@@ -142,7 +166,7 @@
                   id="trash-can-5"
                   latitude="34.0083573"
                   longitude="-118.473185"
-                  title="Trashcan 1">
+                  title="Trashcan 5">
                   <a href="/detail">To detail</a>
                   <iron-icon icon="delete"></iron-icon>
                 </google-map-marker>
@@ -150,7 +174,7 @@
                   id="trash-can-6"
                   latitude="34.021718"
                   longitude="-118.471138"
-                  title="Trashcan 1">
+                  title="Trashcan 6">
                   <a href="/detail">To detail</a>
                   <iron-icon icon="delete"></iron-icon>
                 </google-map-marker>
@@ -158,7 +182,7 @@
                   id="trash-can-7"
                   latitude="34.0243573"
                   longitude="-118.503185"
-                  title="Trashcan 1">
+                  title="Trashcan 7">
                   <a href="/detail">To detail</a>
                   <iron-icon icon="delete"></iron-icon>
                 </google-map-marker>
