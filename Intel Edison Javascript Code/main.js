@@ -1,5 +1,3 @@
-
-
 var B = 3975;
 var mraa = require("mraa");
 
@@ -8,8 +6,8 @@ var temperaturePin = new mraa.Aio(0);
  
 //Tilt meter
 var analogPin0Y = new mraa.Aio(3); 
-    var analogPin1X = new mraa.Aio(4);
-    var analogPin2Z = new mraa.Aio(5);
+var analogPin1X = new mraa.Aio(4);
+var analogPin2Z = new mraa.Aio(5);
 
 //GPS
 var GPSSensor = require('jsupm_ublox6');
@@ -19,11 +17,30 @@ var nmeaBuffer  = new GPSSensor.charArray(bufferLength);
 
 //Buzzer
 var groveSpeaker = require('jsupm_grovespeaker');
-var mySpeaker = new groveSpeaker.GroveSpeaker(2);
+var mySpeaker = new groveSpeaker.GroveSpeaker(8);
 
 //ultrasonic
 var μs = require('microseconds');
 
+var echoPin = new mraa.Gpio(3);
+var trigPin = new mraa.Gpio(4);
+
+var defaultDistance = 0; // centimètre 
+var prevDistance = 0;
+var counter = 0;
+var adjustment = 3; // centimètre
+var lock = false;
+var maximumRange = 500; // Maximum range needed
+var minimumRange = 3; // Minimum range needed
+var unlockReadyCounter = 0;
+var unlockReadyCounterAdjusment = 0;
+var loopDelay = 60; // ms
+var LOW = 0;
+var HIGH = 1;
+
+trigPin.dir(mraa.DIR_OUT);
+echoPin.dir(mraa.DIR_IN);
+////////////////
 
 var sockets ={};
 
@@ -37,11 +54,66 @@ setInterval(function () {
        playTune("c c g g a a g");
 
     }
+    
+    var pulseOn, pulseOff;
+    var duration, distance;
+    trigPin.write(LOW); 
+    usleep(2);
+    trigPin.write(HIGH);
+    usleep(10); 
+    trigPin.write(LOW);
+    
+    while (echoPin.read() == 0) {
+        pulseOff = μs.now();
+
+    }
+    while (echoPin.read() == 1) {
+        pulseOn = μs.now();
+    }
+    duration = pulseOn - pulseOff;
+    distance = parseInt(duration / 58.2);
+    if (
+        !distance ||
+        (!defaultDistance && prevDistance > 0)
+       ) {
+        init();
+        defaultDistance = distance;
+        //console.log("defaultDistance: " + defaultDistance + "cm.");
+    } else if ( 
+            distance >= maximumRange ||
+            distance <= minimumRange ||
+            defaultDistance <= distance ||
+            defaultDistance > prevDistance
+            ) { // lock condtion
+        lockCounter();
+    } else if (
+            (defaultDistance - adjustment) > distance
+            ) { // unlock condtion
+        unlockCounter();
+        //console.log("unlockReadyCounter: " + unlockReadyCounter + " count.");
+        //console.log(" -> Distance: " + distance + "cm.");
+    }
+    if (lock == false) {
+        lockCounter();
+        counter++;
+       // console.log("Counter: " + counter + ".");
+        //console.log(" -> Distance: " + distance + "cm.");
+    }
+    if (distance && unlockReadyCounter == 0) {
+        prevDistance = distance;
+    }
+    
+    
+    console.log("distance: "+distance);
+    
+    
+    
+    
     for (var i = 0; i < sockets.length; i++) {
        sockets[i].emit("message", getTemperatureReadingInFarenheit());
        }
     
-    }, 4000);
+    }, 1000);
 
 function playTune(notes)
 {
@@ -148,11 +220,14 @@ function isTiltOrNot()
     var y = analogPin1X.read();
     var z = analogPin2Z.read();
 
-    console.log(x + "," + y + "," + z); //write the value of the analog pin to the console
+    //console.log(x + "," + y + "," + z); //write the value of the analog pin to the console
     var isTippedOver = (x < 300 || x > 400) || (y < 300 || y > 400);
     return isTippedOver;    
     
 }
+
+
+
 function usleep(us) {
     start = μs.now();
     while (true) {
@@ -161,6 +236,27 @@ function usleep(us) {
         }
     }
 }
+
+function lockCounter() {
+    unlockReadyCounter = 0;
+    lock = true;
+}
+
+function unlockCounter() {
+    if (unlockReadyCounter > unlockReadyCounterAdjusment) {
+        unlockReadyCounter = 0;
+        lock = false;
+    } else {
+        unlockReadyCounter++;
+    }   
+}
+
+function init() {
+    lock = true;
+    defaultDistance = 0;
+    prevDistance = 0;
+    unlockReadyCounter = 0;
+ }
 
 //Create Socket.io server
 var http = require('http');
