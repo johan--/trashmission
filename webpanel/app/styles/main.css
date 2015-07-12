@@ -13,6 +13,10 @@ body {
   color: #333;
 }
 
+google-map {
+  height: 600px;
+}
+
 .graph {
 	display: flex;
 	flex-direction: row;

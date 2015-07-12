@@ -73,14 +73,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Drawer Content -->
           <paper-menu class="list" attr-for-selected="data-route" selected="{{route}}" on-iron-select="onMenuSelect">
-            <a data-route="home" href="/">
+            <a data-route="map" href="/">
               <iron-icon icon="home"></iron-icon>
-              <span>Dashboard</span>
+              <span>Map</span>
             </a>
 
-            <a data-route="users" href="/users">
+            <a data-route="detail" href="/detail">
               <iron-icon icon="info"></iron-icon>
-              <span>Map</span>
+              <span>Detail</span>
             </a>
           </paper-menu>
       </div>
@@ -95,38 +95,79 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="middle paper-font-display2 app-name">
             Trashmission
           </div>
-
-          <!-- Application sub title -->
-          <div class="bottom title"></div>
-
         </paper-toolbar>
 
         <!-- Main Content -->
         <div class="content">
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-            <section data-route="home">
-              <style>
-                google-map {
-                  height: 600px;
-                }
-              </style>
+            <section data-route="map">
               <google-map
                 id="city-map"
                 latitude="34.0183573"
                 longitude="-118.489185"
-                zoom="17"
+                zoom="15"
                 disable-default-ui>
                 <google-map-marker
+                  id="trash-can-1"
                   latitude="34.0183573"
                   longitude="-118.489185"
                   title="Trashcan 1">
+                  <a href="/detail">To detail</a>
+                  <iron-icon icon="delete"></iron-icon>
+                </google-map-marker>
+                <google-map-marker
+                  id="trash-can-2"
+                  latitude="34.0243573"
+                  longitude="-118.489185"
+                  title="Trashcan 1">
+                  <a href="/detail">To detail</a>
+                  <iron-icon icon="delete"></iron-icon>
+                </google-map-marker>
+                <google-map-marker
+                  id="trash-can-3"
+                  latitude="34.0263573"
+                  longitude="-118.493185"
+                  title="Trashcan 1">
+                  <a href="/detail">To detail</a>
+                  <iron-icon icon="delete"></iron-icon>
+                </google-map-marker>
+                <google-map-marker
+                  id="trash-can-4"
+                  latitude="34.0103573"
+                  longitude="-118.493185"
+                  title="Trashcan 1">
+                  <a href="/detail">To detail</a>
+                  <iron-icon icon="delete"></iron-icon>
+                </google-map-marker>
+                <google-map-marker
+                  id="trash-can-5"
+                  latitude="34.0083573"
+                  longitude="-118.473185"
+                  title="Trashcan 1">
+                  <a href="/detail">To detail</a>
+                  <iron-icon icon="delete"></iron-icon>
+                </google-map-marker>
+                <google-map-marker
+                  id="trash-can-6"
+                  latitude="34.0263573"
+                  longitude="-118.473185"
+                  title="Trashcan 1">
+                  <a href="/detail">To detail</a>
+                  <iron-icon icon="delete"></iron-icon>
+                </google-map-marker>
+                <google-map-marker
+                  id="trash-can-7"
+                  latitude="34.0243573"
+                  longitude="-118.503185"
+                  title="Trashcan 1">
+                  <a href="/detail">To detail</a>
                   <iron-icon icon="delete"></iron-icon>
                 </google-map-marker>
               </google-map>
             </section>
 
-            <section data-route="users">
+            <section data-route="detail">
               <div class="graph">
                 <svg viewBox="0 0 32 32"
                   class="trash-can tilted">
@@ -154,23 +195,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </aha-table>
               </div>
             </section>
-
-            <section data-route="user-info">
-              <paper-material elevation="1">
-                <h2 class="paper-font-display2">
-                User:<span>{{params.name}}</span>
-                </h2>
-                <div>This is <span>{{params.name}}</span>'s section</div>
-              </paper-material>
-            </section>
-
-            <section data-route="contact">
-              <paper-material elevation="1">
-                <h2 class="paper-font-display2">Contact</h2>
-                <p>This is the contact section</p>
-              </paper-material>
-            </section>
-
           </iron-pages>
         </div>
       </paper-header-panel>
