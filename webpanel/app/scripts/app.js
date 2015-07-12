@@ -70,12 +70,6 @@
       }
     ];
 
-    cityMap.addEventListener('api-load', function(e) {
-      // hack to hard code direction
-      document.querySelectorAll('google-map-directions')[0].map = this.map;
-      document.querySelectorAll('google-map-directions')[1].map = this.map;
-    });
-
     var trashCan1 = document.getElementById('trash-can-1')
       .icon = canImageUrl.veryLow;
     var trashCan2 = document.getElementById('trash-can-2')
@@ -90,6 +84,13 @@
       .icon = canImageUrl.veryLowTilted;
     var trashCan7 = document.getElementById('trash-can-7')
       .icon = canImageUrl.high;
+
+    document.querySelector('paper-button.route')
+      .addEventListener('click', function() {
+        var map = document.getElementById('city-map').map;
+        document.querySelectorAll('google-map-directions')[0].map = map;
+        document.querySelectorAll('google-map-directions')[1].map = map;
+      });
   });
 
   // Close drawer after menu item is selected if drawerPanel is narrow

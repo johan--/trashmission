@@ -17,6 +17,17 @@ google-map {
   height: 600px;
 }
 
+paper-button.primary {
+	background-color: #4CAF50;
+}
+
+paper-button.route {
+	position: absolute;
+	top: 545px;
+	right: 2em;
+	z-index: 2;
+}
+
 .graph {
 	display: flex;
 	flex-direction: row;
