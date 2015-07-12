@@ -18,6 +18,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     high: 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+Cjxzdmcgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiIGhlaWdodD0iNDAyIiB3aWR0aD0iNTgyIiB5PSItMSIgeD0iLTEiLz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8ZyBpZD0idHJhc2giPgogICA8cmVjdCBpZD0ic3ZnXzEiIGZpbGw9IiNGNDQzMzYiIGhlaWdodD0iMTkiIHdpZHRoPSIyMCIgeT0iMTEiIHg9IjYiLz4KICAgPHBhdGggaWQ9InN2Z18yIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiMzMzMzMzMiIGQ9Im0yOS45OCw2LjgxOWMtMC4wOTU5OTksLTEuNTcgLTEuMzg2OTk5LC0yLjgxNiAtMi45OCwtMi44MTZsLTMsMGwwLC0xbDAsLTAuMDAyYzAsLTEuNjU3IC0xLjM0NCwtMyAtMywtM2wtMTAsMGMtMS42NTcsMCAtMywxLjM0MyAtMywzbDAsMC4wMDFsMCwxbC0zLDBjLTEuNTk1LDAgLTIuODg1LDEuMjQ2IC0yLjk4MSwyLjgxNmwtMC4wMTksMGwwLDEuMTgzMDAxbDAsMWMwLDEuMTAzOTk5IDAuODk2LDIgMiwybDAsMGwwLDE2Ljk5OTk5OWMwLDIuMjA5IDEuNzkxLDQgNCw0bDE2LDBjMi4yMDksMCA0LC0xLjc5MSA0LC00bDAsLTE2Ljk5OTk5OWwwLDBjMS4xMDQsMCAyLC0wLjg5NjAwMSAyLC0ybDAsLTFsMCwtMS4xODJsLTAuMDIsMHptLTE5Ljk4LC0zLjgxN2MwLC0wLjU1MyAwLjQ0NywtMSAxLC0xbDEwLDBjMC41NTI5OTksMCAxLDAuNDQ3IDEsMWwwLDFsLTEyLDBsMCwtMXptMTYsMjUuMDAwMDAxYzAsMS4xMDE5OTkgLTAuODk4MDAxLDIgLTIsMmwtMTYsMGMtMS4xMDMsMCAtMiwtMC44OTgwMDEgLTIsLTJsMCwtMTcuMDAwMDAxbDIwLDBsMCwxNy4wMDAwMDF6bTIsLTIwLjAwMWwwLDFsLTI0LDBsMCwtMWwwLC0wLjk5OTAwMWMwLC0wLjU1MyAwLjQ0NywtMSAxLC0xbDIyLDBjMC41NTI5OTksMCAxLDAuNDQ3IDEsMWwwLDAuOTk5MDAxeiIgY2xpcC1ydWxlPSJldmVub2RkIi8+CiAgIDxwYXRoIGlkPSJzdmdfMyIgZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSIjMzMzMzMzIiBkPSJtOSwyOC4wMDYwMDFsMiwwYzAuNTUzLDAgMSwtMC40NDcwMDEgMSwtMWwwLC0xMy4wMDAwMDFjMCwtMC41NTI5OTkgLTAuNDQ3LC0xIC0xLC0xbC0yLDBjLTAuNTUzLDAgLTEsMC40NDcwMDEgLTEsMWwwLDEzLjAwMDAwMWMwLDAuNTUyOTk5IDAuNDQ3LDEgMSwxem0wLC0xNC4wMDFsMiwwbDAsMTIuOTk5OTk5bC0yLDBsMCwtMTIuOTk5OTk5eiIgY2xpcC1ydWxlPSJldmVub2RkIi8+CiAgIDxwYXRoIGlkPSJzdmdfNCIgZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSIjMzMzMzMzIiBkPSJtMTUsMjguMDA2MDAxbDIsMGMwLjU1Mjk5OSwwIDEsLTAuNDQ3MDAxIDEsLTFsMCwtMTMuMDAwMDAxYzAsLTAuNTUyOTk5IC0wLjQ0NzAwMSwtMSAtMSwtMWwtMiwwYy0wLjU1MywwIC0xLDAuNDQ3MDAxIC0xLDFsMCwxMy4wMDAwMDFjMCwwLjU1Mjk5OSAwLjQ0NywxIDEsMXptMCwtMTQuMDAxbDIsMGwwLDEyLjk5OTk5OWwtMiwwbDAsLTEyLjk5OTk5OXoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPgogICA8cGF0aCBpZD0ic3ZnXzUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZmlsbD0iIzMzMzMzMyIgZD0ibTIxLDI4LjAwNjAwMWwyLDBjMC41NTI5OTksMCAxLC0wLjQ0NzAwMSAxLC0xbDAsLTEzLjAwMDAwMWMwLC0wLjU1Mjk5OSAtMC40NDcwMDEsLTEgLTEsLTFsLTIsMGMtMC41NTI5OTksMCAtMSwwLjQ0NzAwMSAtMSwxbDAsMTMuMDAwMDAxYzAsMC41NTI5OTkgMC40NDcwMDEsMSAxLDF6bTAsLTE0LjAwMWwyLDBsMCwxMi45OTk5OTlsLTIsMGwwLC0xMi45OTk5OTl6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiLz4KICA8L2c+CiA8L2c+Cjwvc3ZnPg=='
   };
 
+  var tilted = false;
+  var eventLogs = [];
+
   // Grab a reference to our auto-binding template
   // and give it some initial binding values
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
@@ -73,6 +76,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     ];
 
+    cityMap.addEventListener('api-load', function(e) {
+      // hack to hard code direction
+      document.querySelectorAll('google-map-directions')[0].map = this.map;
+      document.querySelectorAll('google-map-directions')[1].map = this.map;
+    });
+
     var trashCan1 = document.getElementById('trash-can-1')
       .icon = canImageUrl.high;
     var trashCan2 = document.getElementById('trash-can-2')
@@ -113,55 +122,89 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   }
 
-  var eventLogs = [];
-  window.setInterval(function() {
-    var temperature = getRandomValue(40, 40);
+  function setTemperature (temperature) {
     var gauge = document.getElementById('mutating_gauge');
     gauge.data = [["Label", "Value"],["Temperature", temperature]];
+  }
 
+  function setTilted () {
     var trashCan = document.querySelector('.trash-can');
-    var fillLevel = document.getElementById('fill-level');
-    var level = getRandomValue(0, 20);
+    trashCan.classList.add('tilted');
+    tilted = true;
+  }
 
-    if (getRandomValue(0, 1) === 1) {
-      trashCan.classList.add('tilted');
+  function setUntilted () {
+    var trashCan = document.querySelector('.trash-can');
+    trashCan.classList.remove('tilted');
+    tilted = false;
+  }
+
+  function setTrashLevel (level) {
+    var fillLevel = document.getElementById('fill-level');
+    var upperBound = 30;
+
+    level = Math.round((level / upperBound) * 20);
+
+    if (tilted) {
       fillLevel.setAttribute('y', 11);
       fillLevel.setAttribute('height', 19);
       fillLevel.setAttribute('x', 26-level);
       fillLevel.setAttribute('width', level);
       fillLevel.setAttribute('fill', getFillLevelColor(level));
     } else {
-      trashCan.classList.remove('tilted');
       fillLevel.setAttribute('x', 6);
       fillLevel.setAttribute('width', 20);
       fillLevel.setAttribute('y', 30-level);
       fillLevel.setAttribute('height', level);
       fillLevel.setAttribute('fill', getFillLevelColor(level));
     }
+  }
 
+  function appendEvent (event) {
     var eventTable = document.getElementById('event-table');
-    eventLogs.unshift({
-      Time: new Date(),
-      Level: level,
-      Temperature: temperature
-    });
+    eventLogs.unshift(event);
 
     eventTable.data = eventLogs;
 
     // hack to get table redraw
     eventTable.refreshPagination(true);
-  }, 1000);
+  }
 
-  // var socket = io.connect('http://10.60.0.88:1337');
+  var socket = io.connect('http://10.60.0.88:1337');
 
-  // //Attach a 'connected' event handler to the socket
-  // socket.on("connected", function (message) {
-  //     //Load page with transition
-  //     console.log(message);
-  // });
+  //Attach a 'connected' event handler to the socket
+  socket.on("connected", function (message) {
+      //Load page with transition
+      console.log(message);
+  });
 
-  // socket.on("message", function (message) {
-  //   console.log(message);
-  // });
+  // message format
+  // {
+  //  lat: number,
+  //  long: number,
+  //  tilted: boolean,
+  //  temperature: number (in Fer),
+  //  distance: number (in CM)
+  // }
+  socket.on("message", function (message) {
+    var allEvent = JSON.parse(message);
+    if (allEvent.tilted === true) {
+      setTilted();
+    } else {
+      setUntilted();
+    }
+
+    setTrashLevel(allEvent.distance);
+    setTemperature(Math.round(allEvent.temperature));
+
+    appendEvent({
+      Timestamp: new Date(),
+      'Trash Level': allEvent.distance,
+      Temperature: allEvent.temperature,
+      Tilted: allEvent.tilted ? 'Yes': 'No',
+      Longitude: allEvent.long,
+      Latitude: allEvent.lat
+    });
+  });
 
 })(document, io);

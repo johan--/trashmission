@@ -1,13 +1,3 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <!doctype html>
 <html lang="">
 
@@ -102,6 +92,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
             <section data-route="map">
+              <google-map-directions
+                start-address="Pico, Santa Monica, CA, USA"
+                end-address="929 Colorado Ave, Santa Monica, CA 90401"
+                travel-mode="DRIVING"></google-map-directions>
+              <google-map-directions
+                start-address="929 Colorado Ave, Santa Monica, CA 90401"
+                end-address="4Th Nb & Idaho Fs, Santa Monica, CA 90403, USA"
+                travel-mode="DRIVING"></google-map-directions>
               <google-map
                 id="city-map"
                 latitude="34.0183573"
@@ -111,7 +109,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <google-map-marker
                   id="trash-can-1"
                   latitude="34.0183573"
-                  longitude="-118.489185"
+                  longitude="-118.486679"
                   title="Trashcan 1">
                   <a href="/detail">To detail</a>
                   <iron-icon icon="delete"></iron-icon>
@@ -150,8 +148,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </google-map-marker>
                 <google-map-marker
                   id="trash-can-6"
-                  latitude="34.0263573"
-                  longitude="-118.473185"
+                  latitude="34.021718"
+                  longitude="-118.471138"
                   title="Trashcan 1">
                   <a href="/detail">To detail</a>
                   <iron-icon icon="delete"></iron-icon>
