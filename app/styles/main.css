@@ -1,0 +1,92 @@
+/*
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+body {
+  background: #fafafa;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+.graph {
+	display: flex;
+	flex-direction: row;
+}
+
+.graph > *:not(.color-level) {
+	flex: 1;
+}
+
+#fill-level {
+	-webkit-transition: all .3s;
+	-o-transition: all .3s;
+	transition: all .3s;
+}
+
+.trash-can {
+	-webkit-transition: all .3s;
+	-o-transition: all .3s;
+	transition: all .3s;
+
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
+}
+
+.trash-can.tilted {
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+table.aha-table {
+	width: 100%;
+}
+
+table.aha-table thead tr {
+	border-bottom: 1px solid #f00;
+}
+
+.color-indicator {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9c27b0+0,2196f3+100 */
+	background: #9c27b0; /* Old browsers */
+	background: -moz-linear-gradient(top,  #9c27b0 0%, #2196f3 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9c27b0), color-stop(100%,#2196f3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #9c27b0 0%,#2196f3 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #9c27b0 0%,#2196f3 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #9c27b0 0%,#2196f3 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #9c27b0 0%,#2196f3 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c27b0', endColorstr='#2196f3',GradientType=0 ); /* IE6-9 */
+	width: 20px;
+}
+
+.color-level {
+	display: flex;
+	flex-direction: row;
+}
+
+.color-level .hint {
+	flex: 1;
+}
+
+.color-level .hint {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.color-level .hint > span {
+	font-size: 1.3em;
+}
+
+.color-level .hint > *:first-child {
+	flex: 1;
+	flex-basis: 30px;
+}
