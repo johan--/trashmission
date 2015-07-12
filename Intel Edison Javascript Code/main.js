@@ -43,8 +43,27 @@ trigPin.dir(mraa.DIR_OUT);
 echoPin.dir(mraa.DIR_IN);
 ////////////////
 
+//M2X
+var config = require("./config");
+var M2X = require("m2x");
+var m2xClient = new M2X(config.api_key);
+var streams = ["temperature", "tilt", "level", "lat","long"];
+
+//socket.io
 var sockets =[];
 
+//Cached Data
+var dataCache=[];
+
+
+//LED sensor
+var redPin = new mraa.Gpio(5);
+var greenPin = new mraa.Gpio(6);
+var bluePin = new mraa.Gpio(7);
+
+redPin.dir(mraa.DIR_OUT);
+greenPin.dir(mraa.DIR_OUT);
+bluePin.dir(mraa.DIR_OUT);
 
 setInterval(function () {
        
@@ -123,22 +142,74 @@ setInterval(function () {
     }
     
     var tilted = isTiltOrNot();
+   var at = new Date().toISOString();
+
     
     var output = {
         "lat": gpsInfo.lat,
         "long": gpsInfo.long,
         "tilted": tilted,
         "temperature": temperature,
-        "distance" : distance
+        "distance" : distance,
+        "timestamp" : at
             
     };
+    
+    //everything good
+    if(!tilted&distance>20)
+    {
+        
+        redPin.write(LOW);
+        greenPin.write(HIGH);
+        bluePin.write(LOW);
+        
+    }
+    else if(tilted)
+    {
+     
+        redPin.write(HIGH);
+        greenPin.write(LOW);
+        bluePin.write(LOW);
+        
+    }
+    else if(!tilted&&distance<20)
+    {
+         redPin.write(LOW);
+        greenPin.write(LOW);
+        bluePin.write(HIGH);
+        
+        
+    }
     console.log(JSON.stringify(output));
+    dataCache.push(output);
     for (var i = 0; i < sockets.length; i++) {
        sockets[i].emit("message", JSON.stringify(output));
        }
     console.log("---------------------------------------------------");
     
     }, 1000);
+setInterval(function(){
+              var data = dataCache.shift();
+    console.log("tilted? "+data.tilted);
+          if(data!==undefined)
+          {
+         var values = {
+                tilt:  [ { value: data.tilted==true?1:0, timestamp: data.timestamp } ],
+                level:  [ { value: data.distance, timestamp: data.timestamp } ],
+                lat: [ { value: data.lat, timestamp: data.timestamp } ],
+                long: [ { value: data.long, timestamp: data.timestamp } ]
+            };
+            console.log("sending: "+JSON.stringify(values));
+
+            // Write the different values into AT&T M2X
+            m2xClient.devices.postMultiple(config.device, values, function(result) {
+                console.log(result);
+            });
+              
+          }
+            
+}, 4000);
+
 
 function playTune(notes)
 {
