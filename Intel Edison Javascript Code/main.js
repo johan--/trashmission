@@ -14,6 +14,7 @@ var GPSSensor = require('jsupm_ublox6');
 var myGPSSensor = new GPSSensor.Ublox6(0);
 var bufferLength = 256;
 var nmeaBuffer  = new GPSSensor.charArray(bufferLength);
+var oldGPSData;
 
 //Buzzer
 var groveSpeaker = require('jsupm_grovespeaker');
@@ -42,13 +43,11 @@ trigPin.dir(mraa.DIR_OUT);
 echoPin.dir(mraa.DIR_IN);
 ////////////////
 
-var sockets ={};
+var sockets =[];
 
 
 setInterval(function () {
-        console.log(getTemperatureReadingInFarenheit());
-    console.log(getGPSInfo());
-    console.log("is tilt: " + isTiltOrNot());
+       
       // Play a medium C-sharp
     if (isTiltOrNot()) {
        playTune("c c g g a a g");
@@ -102,16 +101,42 @@ setInterval(function () {
     if (distance && unlockReadyCounter == 0) {
         prevDistance = distance;
     }
+
     
+    /*
+        lat
+        long
+        tilted
+        temperature
+        distance
+    */
     
-    console.log("distance: "+distance);
+     var temperature = getTemperatureReadingInFarenheit();
+    var gpsInfo = getGPSInfo();
+    if(gpsInfo==undefined)
+    {
+    gpsInfo=oldGPSData;
+    }
+    else{
     
+    oldGPSData = gpsInfo;
+    }
     
+    var tilted = isTiltOrNot();
     
-    
+    var output = {
+        "lat": gpsInfo.lat,
+        "long": gpsInfo.long,
+        "tilted": tilted,
+        "temperature": temperature,
+        "distance" : distance
+            
+    };
+    console.log(JSON.stringify(output));
     for (var i = 0; i < sockets.length; i++) {
-       sockets[i].emit("message", getTemperatureReadingInFarenheit());
+       sockets[i].emit("message", JSON.stringify(output));
        }
+    console.log("---------------------------------------------------");
     
     }, 1000);
 
@@ -166,8 +191,8 @@ function getGPSInfo()
                 var latitude = dataArray[2]/100;
                 var longtitude = dataArray[4]/100;
                 var result = {
-                  "latitude": latitude,
-                  "longtitude": longtitude
+                  "lat": latitude,
+                  "long": longtitude
                 };
                 return result;
                 //console.log("lat: "+latitude+" longtitude: "+longtitude);
