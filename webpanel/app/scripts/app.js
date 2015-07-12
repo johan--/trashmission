@@ -19,12 +19,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     document.querySelector('#caching-complete').show();
   };
 
-  // Listen for template bound event to know when bindings
-  // have resolved and content has been stamped to the page
-  app.addEventListener('dom-change', function() {
-    console.log('Our app is ready to rock!');
-  });
-
   // See https://github.com/Polymer/polymer/issues/1381
   window.addEventListener('WebComponentsReady', function() {
     // imports are loaded and elements have been registered
@@ -80,34 +74,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   };
 
-  Notification.requestPermission();
-
-  function getRandomGaugeValue(offset, factor) {
+  function getRandomValue(offset, factor) {
     return offset + Math.round(factor * Math.random());
   }
 
   function getFillLevelColor (level) {
     if (level > 15) {
-      return '#673AB7';
+      return '#F44336';
     } else if (level > 10) {
-      return '#3F51B5';
+      return '#FFC107';
     } else if (level > 5) {
-      return '#2196F3';
+      return '#FFEB3B';
     } else {
-      return '#2196F3';
+      return '#4CAF50';
     }
   }
   var eventLogs = [];
   window.setInterval(function() {
-    var temperature = getRandomGaugeValue(40, 40);
+    var temperature = getRandomValue(40, 40);
     var gauge = document.getElementById('mutating_gauge');
     gauge.data = [["Label", "Value"],["Temperature", temperature]];
 
     var trashCan = document.querySelector('.trash-can');
     var fillLevel = document.getElementById('fill-level');
-    var level = getRandomGaugeValue(0, 20);
+    var level = getRandomValue(0, 20);
 
-    if (getRandomGaugeValue(0, 1) === 1) {
+    if (getRandomValue(0, 1) === 1) {
       trashCan.classList.add('tilted');
       fillLevel.setAttribute('y', 11);
       fillLevel.setAttribute('height', 19);
