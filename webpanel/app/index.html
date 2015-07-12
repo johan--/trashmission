@@ -128,13 +128,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <section data-route="users">
               <div class="graph">
-                <div class="color-level">
-                  <div class="hint">
-                    <span>Smelly</span>
-                    <span>Okay</span>
-                  </div>
-                  <div class="color-indicator"></div>
-                </div>
                 <svg viewBox="0 0 32 32"
                   class="trash-can tilted">
                   <g>
@@ -208,6 +201,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       margin-top: 2em;
       border: 1px solid rgba(0,0,0,.3);
       border-radius: 3px;
+      border-spacing: 0;
     }
 
     #event-table::shadow th,
@@ -218,12 +212,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     #event-table::shadow td {
+      font-size: .8em;
+    }
+
+    #event-table::shadow td {
       border-bottom: 1px solid rgba(0,0,0,.3);
     }
 
     #event-table::shadow thead th {
       background-color: rgba(0,0,0,.2);
       border-bottom: 1px solid rgba(0,0,0,.3);
+    }
+
+    #event-table::shadow .pagination {
+      display: flex;
+    }
+
+    #event-table::shadow .paging {
+      flex: 1;
+    }
+
+    #event-table::shadow .pagination.aha-table button.aha-table {
+      margin: 0;
+      padding: .5em;
+    }
+
+    #event-table::shadow .summary {
+      margin-left: 1em;
     }
   </style>
 </body>

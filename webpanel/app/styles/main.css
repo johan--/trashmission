@@ -29,6 +29,8 @@ body {
 }
 
 .trash-can {
+	flex: 4 !important;
+	height: 300px;
 	-webkit-transition: all .3s;
 	-o-transition: all .3s;
 	transition: all .3s;
@@ -52,41 +54,4 @@ table.aha-table {
 
 table.aha-table thead tr {
 	border-bottom: 1px solid #f00;
-}
-
-.color-indicator {
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9c27b0+0,2196f3+100 */
-	background: #9c27b0; /* Old browsers */
-	background: -moz-linear-gradient(top,  #9c27b0 0%, #2196f3 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9c27b0), color-stop(100%,#2196f3)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #9c27b0 0%,#2196f3 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #9c27b0 0%,#2196f3 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #9c27b0 0%,#2196f3 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #9c27b0 0%,#2196f3 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9c27b0', endColorstr='#2196f3',GradientType=0 ); /* IE6-9 */
-	width: 20px;
-}
-
-.color-level {
-	display: flex;
-	flex-direction: row;
-}
-
-.color-level .hint {
-	flex: 1;
-}
-
-.color-level .hint {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-}
-
-.color-level .hint > span {
-	font-size: 1.3em;
-}
-
-.color-level .hint > *:first-child {
-	flex: 1;
-	flex-basis: 30px;
 }
