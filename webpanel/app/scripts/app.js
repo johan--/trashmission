@@ -228,7 +228,7 @@
 
   getCurrentWeather(34.0183573, -118.489185);
 
-  connectToBoard('10.60.0.88', '1337');
+  connectToBoard('10.102.100.44', '1337');
 
   function connectToBoard (ip, port) {
     var socket = io.connect('http://' + ip + ':' + port);
