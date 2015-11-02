@@ -21,18 +21,18 @@
       </g>
     </svg>
     <section class="charts container">
-      <div>
-        <canvas id="line" class="chart chart-line" chart-data="detail.temperatureData"
-          chart-options="detail.chartOptions"
-          chart-labels="detail.labels" chart-legend="true" chart-series="series">
-        </canvas>
+      <div id="temperature_chart" class="epoch">
       </div>
-      <div>
-        <canvas id="line" class="chart chart-line" chart-data="detail.binaryData"
-          chart-options="detail.chartOptions"
-          chart-labels="detail.labels" chart-legend="true" chart-series="detail.binarySeries"
-          chart-colours="detail.binaryColours">
-        </canvas>
+      <div class="legends">
+        <div class="legend">
+          <span class="color-1"></span> Temperature
+        </div>
+        <div class="legend">
+          <span class="color-2"></span> Tilted (binary)
+        </div>
+        <div class="legend">
+          <span class="color-3"></span> Full (binary)
+        </div>
       </div>
     </section>
   </section>

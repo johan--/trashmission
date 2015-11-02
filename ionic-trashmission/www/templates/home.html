@@ -2,12 +2,14 @@
   <h1 class="title">TrashMission</h1>
 </ion-header-bar>
 <ion-header-bar align-title="center" class="bar-subheader">
-  <h2 class="title">San Francisco</h2>
+  <h2 class="title">{{home.city}}</h2>
 </ion-header-bar>
 <ion-content>
   <div id="map" data-tap-disabled="true"></div>
 </ion-content>
 <ion-footer-bar align-title="left" class="bar-balanced">
   <h1 class="title"></h1>
-  <button class="button icon ion-android-navigate"></button>
+  <button class="button icon ion-android-navigate"
+    ng-click="home.route()"
+  ></button>
 </ion-footer-bar>

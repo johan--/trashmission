@@ -4,8 +4,10 @@ var upperBound = 21;
 
 angular.module('trashmission.controllers', [])
 
-.controller('HomeCtrl', function($state) {
+.controller('HomeCtrl', function($scope, $state, $http) {
   var vm = this;
+
+  vm.city = 'Inner Mission/Bernal Heights';
 
   var redMarker = L.AwesomeMarkers.icon({
     prefix: 'ion',
@@ -22,225 +24,88 @@ angular.module('trashmission.controllers', [])
     icon: 'android-delete',
     markerColor: 'green'
   });
+  vm.markers = [];
 
-  vm.firstTrashcan;
+  vm.route = route;
 
-  var map = L.map('map').setView([37.7848981, -122.4111284], 14);
+  function route () {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
 
-  var geoJson = {
-    "type": "FeatureCollection",
-    "features": [
-        {
-            "type": "Feature",
-            "properties": {
-                "id": "1",
-                "title": "",
-                "description": "Trashcan 1",
-                "marker-size": "medium",
-                "marker-color": "#fa946e",
-                "color": "orange",
-                "marker-symbol": "waste-basket"
-            },
-            "geometry": {
-                "coordinates": [
-                  -122.4098852,
-                  37.7620421
-                ],
-                "type": "Point"
-            },
-            "id": "0bacc02753dd2a086bf171920183d0ce"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "id": "2",
-                "title": "",
-                "description": "Trashcan 2",
-                "marker-size": "medium",
-                "marker-color": "#f86767",
-                "color": "red",
-                "marker-symbol": "waste-basket"
-            },
-            "geometry": {
-                "coordinates": [
-                    -122.419281,
-                    37.775192
-                ],
-                "type": "Point"
-            },
-            "id": "19f580878d4b3c15a7e0bdc77341f117"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "id": "3",
-                "title": "",
-                "description": "Trashcan 3",
-                "marker-size": "medium",
-                "marker-color": "#f86767",
-                "color": "red",
-                "marker-symbol": "waste-basket"
-            },
-            "geometry": {
-                "coordinates": [
-                    -122.43134,
-                    37.785469
-                ],
-                "type": "Point"
-            },
-            "id": "4c82dbaf9145488a268691a67e3a526a"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "id": "4",
-                "title": "",
-                "description": "Trashcan 4",
-                "marker-size": "medium",
-                "marker-color": "#fa946e",
-                "color": "orange",
-                "marker-symbol": "waste-basket"
-            },
-            "geometry": {
-                "coordinates": [
-                    -122.407135,
-                    37.790353
-                ],
-                "type": "Point"
-            },
-            "id": "4e80de41cfc76b6a36c6d86ed418fea2"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "id": "5",
-                "title": "",
-                "description": "Trashcan 5",
-                "marker-size": "medium",
-                "marker-color": "#a3e46b",
-                "color": "green",
-                "marker-symbol": "waste-basket"
-            },
-            "geometry": {
-                "coordinates": [
-                    -122.421383,
-                    37.785707
-                ],
-                "type": "Point"
-            },
-            "id": "74787c506bc2b66b095b81cbb5c45e67"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "id": "6",
-                "title": "",
-                "description": "Trashcan 6",
-                "marker-size": "medium",
-                "marker-color": "#f86767",
-                "color": "red",
-                "marker-symbol": "waste-basket"
-            },
-            "geometry": {
-                "coordinates": [
-                    -122.412672,
-                    37.784961
-                ],
-                "type": "Point"
-            },
-            "id": "a289176219e397bf85041027a9c24745"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "id": "7",
-                "title": "",
-                "description": "Trashcan 7",
-                "marker-size": "medium",
-                "marker-color": "#f86767",
-                "color": "red",
-                "marker-symbol": "waste-basket"
-            },
-            "geometry": {
-                "coordinates": [
-                    -122.423443,
-                    37.795711
-                ],
-                "type": "Point"
-            },
-            "id": "b71814d327911fc75e2cc158a1471007"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "id": "8",
-                "title": "",
-                "description": "Trashcan 8",
-                "marker-size": "medium",
-                "marker-color": "#f86767",
-                "color": "red",
-                "marker-symbol": "waste-basket"
-            },
-            "geometry": {
-                "coordinates": [
-                    -122.43061,
-                    37.780789
-                ],
-                "type": "Point"
-            },
-            "id": "d80de7a3cc8f95fffbbd4272955e141b"
-        },
-        {
-            "type": "Feature",
-            "properties": {
-                "id": "9",
-                "title": "",
-                "description": "Trashcan 9",
-                "marker-size": "medium",
-                "marker-color": "#a3e46b",
-                "color": "green",
-                "marker-symbol": "waste-basket"
-            },
-            "geometry": {
-                "coordinates": [
-                    -122.429451,
-                    37.775124
-                ],
-                "type": "Point"
-            },
-            "id": "ee98b35656888c5f45493f39ab179a7a"
-        }
-    ],
-    "id": "rcliao.cigfua5ev854ztdm6xuj8jj1g"
-  };
-
-  L.geoJson(geoJson, {
-    onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.description);
-    },
-    pointToLayer: function (feature, latlng) {
-      var marker;
-
-      if (feature.properties.color === 'red') {
-        marker = L.marker(latlng, {icon: redMarker});
-      } else if (feature.properties.color === 'orange') {
-        marker = L.marker(latlng, {icon: orangeMarker});
-      } else {
-        marker = L.marker(latlng, {icon: greenMarker});
-      }
-
-      marker.on('click', function(event) {
-        $state.go('trashcan-detail', {id: feature.properties.id})
-      });
-
-      if (feature.properties.id === '1') {
-        console.log('assigning first trashcan');
-        vm.firstTrashcan = marker;
-      }
-
-      return marker;
+    if (!vm.control) {
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    } else {
+      vm.control.removeFrom(map);
+      vm.control = null;
     }
-  }).addTo(map);
+
+    function error (error) {
+      alert(error.message);
+    }
+
+    function success (pos) {
+      var coords = pos.coords;
+      var waypoints = [L.latLng(coords.latitude, coords.longitude)]
+
+      waypoints = waypoints.concat(vm.markers.filter(function(marker) {
+        return marker.feature.properties.color === 'red';
+      }).map(function(marker) {
+        return marker.getLatLng();
+      }));
+      vm.control = L.Routing.control({
+        waypoints: waypoints
+      }).addTo(map);
+    }
+  }
+
+  var map = L.map('map').setView([37.7620421, -122.4098852], 14);
+
+  $http.get('/json/trashcans.json').then(function(response) {
+    var trashcanJson = response.data;
+    L.geoJson(trashcanJson, {
+      pointToLayer: function (feature, latlng) {
+        var marker;
+
+        if (feature.properties.color === 'red') {
+          marker = L.marker(latlng, {icon: redMarker});
+        } else if (feature.properties.color === 'orange') {
+          marker = L.marker(latlng, {icon: orangeMarker});
+        } else {
+          marker = L.marker(latlng, {icon: greenMarker});
+        }
+
+        marker.on('click', function(event) {
+          $state.go('trashcan-detail', {id: feature.properties.id})
+        });
+
+        vm.markers.push(marker);
+
+        return marker;
+      }
+    }).addTo(map);
+  });
+  $http.get('/json/sf-neighborhood.json').then(function(response) {
+    var sfGeoJson = response.data;
+    L.geoJson(sfGeoJson, {
+      onEachFeature: function(feature, layer) {
+        layer.setStyle({
+          color: '#33cd5f',
+          weight: 2,
+          opacity: 0.6,
+          fillOpacity: 0.1,
+          fillColor: '#33cd5f'
+        });
+        layer.on('click', function() {
+          map.fitBounds(layer.getBounds());
+          vm.city = feature.properties.name;
+          $scope.$digest();
+        });
+      }
+    }).addTo(map);
+  })
 
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -270,9 +135,11 @@ angular.module('trashmission.controllers', [])
     var allEvent = JSON.parse(message);
 
     if (allEvent.distance <= Math.floor(upperBound/2) || allEvent.tilted) {
-      vm.firstTrashcan.setIcon(redMarker);
+      vm.markers[0].feature.properties.color = 'red';
+      vm.markers[0].setIcon(redMarker);
     } else {
-      vm.firstTrashcan.setIcon(greenMarker);
+      vm.markers[0].feature.properties.color = 'green';
+      vm.markers[0].setIcon(greenMarker);
     }
   });
 })
@@ -283,17 +150,12 @@ angular.module('trashmission.controllers', [])
   var trashcanDom = document.getElementById('trashcan');
   var timeFilter = $filter('date');
 
-  $scope.series = ['Temperature'];
-  vm.binarySeries = ['Fill', 'Tilted'];
-  vm.binaryColours = ['Red', 'Green']
-  vm.labels = [];
-  vm.temperatureData = [[]];
-  vm.binaryData = [[], []];
-  vm.chartOptions = {
-    animation: false
-  };
+  initializeChart();
+  // connectToBoard(ip, port);
 
-  connectToBoard(ip, port);
+  setInterval(function() {
+    updateChart({temperature: Math.random() * 100});
+  }, 300);
 
   vm.id = $stateParams.id;
 
@@ -301,6 +163,42 @@ angular.module('trashmission.controllers', [])
 
   function goBack () {
     $state.go('home');
+  }
+
+  function initializeChart () {
+    vm.temperatureChartDom = $('#temperature_chart')
+      .epoch(
+        {
+          type: 'time.line',
+          axes: ['left', 'bottom', 'right'],
+          data: [{
+            label: 'Temperature',
+            values: []
+          }, {
+            label: 'Tilted',
+            values: [],
+            range: 'range-r'
+          }, {
+            label: 'Fill',
+            values: [],
+            range: 'range-r'
+          }],
+          range: {
+            left: [0, 180],
+            right: [0, 1]
+          },
+        }
+      );
+  }
+
+  function updateChart (allData) {
+    if (vm.temperatureChartDom) {
+      vm.temperatureChartDom.push([
+        {time: (new Date().getTime()/1000), y: allData.temperature},
+        {time: (new Date().getTime()/1000), y: Math.random() > .7 ? 1: 0},
+        {time: (new Date().getTime()/1000), y: Math.random() > .9 ? 1: 0}
+      ]);
+    }
   }
 
   function connectToBoard (ip, port) {
@@ -330,15 +228,9 @@ angular.module('trashmission.controllers', [])
         setTrashLevel(27);
       }
 
-      vm.binaryData[0].push(allEvent.distance <= Math.floor(upperBound/2) ? 1 : 0);
-      vm.binaryData[1].push(allEvent.tilted ? 1 : 0);
-
-      if (vm.labels.length > 5) {
-        vm.binaryData[0] = vm.binaryData[0].slice(1);
-        vm.binaryData[1] = vm.binaryData[1].slice(1);
-      }
-
       setTemperature(allEvent.temperature);
+
+      updateChart(allEvent);
     });
   }
 
@@ -363,11 +255,6 @@ angular.module('trashmission.controllers', [])
       vm.labels = vm.labels.slice(1);
       vm.temperatureData[0] = vm.temperatureData[0].slice(1);
     }
-
-    vm.labels.push(timeFilter(new Date(), 'mediumTime'));
-    vm.temperatureData[0].push(temperature);
-
-    $scope.$digest();
   }
 
   function setTrashLevel (level) {

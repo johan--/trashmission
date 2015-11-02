@@ -1,4 +1,4 @@
-angular.module('trashmission', ['ionic', 'chart.js', 'trashmission.controllers', 'trashmission.services'])
+angular.module('trashmission', ['ionic', 'trashmission.controllers', 'trashmission.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
